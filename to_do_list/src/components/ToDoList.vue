@@ -3,7 +3,7 @@
       <ul>
           <li v-for="task in toDoList" :key="task.index"><input type="checkbox" v-model="task.checked">{{ task.toDo }}</li>
       </ul>
-      <button type="submit" @click="deleteTask">Delete completed</button>
+      <button type="submit" @click="deleteTask(task)">Delete completed</button>
   </div>
 </template>
 
@@ -12,11 +12,8 @@ export default {
     name: 'ToDoList',
     props: ['toDoList'],
     methods: {
-        deleteTask(key){
-            console.log(key)
-            if(this.task.checked){
-                this.$emit('deleteTask', this.task.index)
-            }
+        deleteTask(task){
+            console.log(task)
         }
     }
 }
@@ -24,14 +21,21 @@ export default {
 
 <style scoped> 
     .toDoList {
-            background: #fff;
-            width: 50%;
-            -webkit-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
-            -moz-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
-            box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
-            box-sizing: border-box;
-            color: #16A085;
+        background: #fff;
+        width: 50%;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
+        box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
+        box-sizing: border-box;
+        color: #16A085;
     }
+
+    /*
+    Clase
+    Id
+    Tipo de elemento
+    Si padre, si es par...
+    */
 
     ul {
         list-style-type: none;
