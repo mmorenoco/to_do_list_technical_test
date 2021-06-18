@@ -1,9 +1,9 @@
 <template>
-  <div class="toDoList">
-      <ul>
-          <li v-for="task in toDoList" :key="task.index"><input type="checkbox" v-model="task.checked">{{ task.toDo }}</li>
+  <div class="to-do">
+      <ul class="to-do__list">
+          <li class="to-do__list--task" v-for="task in toDoList" :key="task.index"><input type="checkbox" v-model="task.checked">{{ task.toDo }}</li>
       </ul>
-      <button type="submit" @click="deleteTask(task)">Delete completed</button>
+      <button class="to-do__button" type="submit" @click="deleteTask(task)">Delete completed</button>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped> 
-    .toDoList {
+    .to-do {
         background: #fff;
         width: 50%;
         -webkit-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
@@ -37,12 +37,12 @@ export default {
     Si padre, si es par...
     */
 
-    ul {
+    .to-do__list {
         list-style-type: none;
         padding-inline-end: 40px;
     }
 
-    ul li {
+    .to-do__list--task {
         border-bottom: 1px solid #EAECEE;
         margin-bottom: 15px;
     }
@@ -51,9 +51,9 @@ export default {
         margin-right: 20px;
     }
 
-    button {
+    .to-do__button {
         border: none;
-        background: #16A085;
+        background: #FC65BA;
         color: white;
         font-weight: bold;
         margin: 15px;
@@ -61,9 +61,17 @@ export default {
         border-radius: 5px;
     }
 
-    button:hover {
+    .to-do__button:hover {
         outline: none;
         filter: brightness(125%);
         cursor: pointer;
+    }
+
+
+    @media only screen and (max-width: 576px){
+        .to-do {
+            width: 95%;
+            border-radius: 5px;
+        }
     }
 </style>

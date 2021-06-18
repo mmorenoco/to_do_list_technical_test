@@ -38,6 +38,8 @@ export default {
 
 <style scoped>
 
+
+
     .add-bar-container {
         background: white;
         padding: 15px;
@@ -68,7 +70,7 @@ export default {
 
     .add-bar__button  {
         border: none;
-        background: #C70039;
+        background: #FCC24C;
         color: white;
         font-weight: bold;
         margin: 15px;
@@ -80,5 +82,16 @@ export default {
         outline: none;
         filter: brightness(125%);
         cursor: pointer;
+    }
+
+    @media  only screen and (max-width: 576px) {
+        .add-bar-container {
+            width: 95%;
+            border-radius: 5px;
+        }
+
+        .add-bar {
+            width: 100%;
+        }
     }
 </style>
