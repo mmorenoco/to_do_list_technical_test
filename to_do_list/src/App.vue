@@ -31,11 +31,11 @@ export default {
 </script>
 
 <style>
-html {
-  box-sizing: border-box;
-  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(30,75,81,1) 33%, rgba(44,111,103,1) 49%, rgba(64,123,117,1) 55%, rgba(90,140,135,1) 65%, rgba(213,216,220,1) 100%);
+  html {
+    box-sizing: border-box;
+    background-image: radial-gradient(circle, #488ed4, #3b6cad, #2d4d88, #1e2f63, #0d1440);
     font-size: large;
-}
+  }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

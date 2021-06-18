@@ -1,8 +1,8 @@
 <template>
-  <div class="topBar">
-      <div class="addBar">
-          <input type="text" name="addToDoTask" id="addToDoTask" v-model="toDo">
-          <button type="submit" @click="addTask">Add</button>
+  <div class="add-bar-container topBar">
+      <div class="add-bar addBar">
+          <input class="add-bar__input" type="text" name="addToDoTask" id="addToDoTask" v-model="toDo">
+          <button class="add-bar__button" type="submit" @click="addTask">Add</button>
       </div>
   </div>
 </template>
@@ -37,47 +37,61 @@ export default {
 </script>
 
 <style scoped>
-.topBar {
-    background: white;
-    padding: 15px;
-    width: 50%;
-    margin-top: 5%;
-    margin-bottom: 2%;
-    box-sizing: border-box;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
-    -moz-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
-    box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
-}
 
-.addBar {
-    background: #EAECEE;
-    border-radius: 5px;
-}
 
-#addToDoTask {
-    border: none;
-    background: #EAECEE;
-    width: 80%;
-    padding: 15px;
-}
 
-#addToDoTask:focus {
-    outline: none;
-}
+    .add-bar-container {
+        background: white;
+        padding: 15px;
+        width: 50%;
+        margin-top: 5%;
+        margin-bottom: 2%;
+        box-sizing: border-box;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
+        box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
+    }
 
-button  {
-    border: none;
-    background: #C70039;
-    color: white;
-    font-weight: bold;
-    margin: 15px;
-    padding: 10px 15px;
-    border-radius: 5px;
-}
+    .add-bar {
+        background: #EAECEE;
+        border-radius: 5px;
+    }
 
-button:hover {
-    outline: none;
-    filter: brightness(125%);
-    cursor: pointer;
-}
+    .add-bar__input {
+        border: none;
+        background: #EAECEE;
+        width: 80%;
+        padding: 15px;
+    }
+
+    .add-bar__input:focus {
+        outline: none;
+    }
+
+    .add-bar__button  {
+        border: none;
+        background: #FCC24C;
+        color: white;
+        font-weight: bold;
+        margin: 15px;
+        padding: 10px 15px;
+        border-radius: 5px;
+    }
+
+    .add-bar__button:hover {
+        outline: none;
+        filter: brightness(125%);
+        cursor: pointer;
+    }
+
+    @media  only screen and (max-width: 576px) {
+        .add-bar-container {
+            width: 95%;
+            border-radius: 5px;
+        }
+
+        .add-bar {
+            width: 100%;
+        }
+    }
 </style>
