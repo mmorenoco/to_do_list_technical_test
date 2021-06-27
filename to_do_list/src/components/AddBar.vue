@@ -1,8 +1,8 @@
 <template>
   <div class="add-bar-container topBar">
       <div class="add-bar addBar">
-          <input class="add-bar__input" type="text" name="addToDoTask" id="addToDoTask" v-model="toDo">
-          <button class="add-bar__button" type="submit" @click="addTask">Add</button>
+          <input class="add-bar__input" type="text" name="addToDoTask" id="addToDoTask" v-model="toDo" @keypress.enter="addTask" >
+          <button class="add-bar__button" type="text" @click="addTask">Add</button>
       </div>
   </div>
 </template>
@@ -11,15 +11,15 @@
 export default {
     data() {
         return {
-                checked: false,
+                completed: false,
                 toDo: ''
         }
     },
     methods: {
         addTask() {
-            console.log(this.checked, this.toDo)
+            console.log(this.completed, this.toDo)
             const task = {
-                checked: this.checked,
+                completed: this.completed,
                 toDo: this.toDo
             }
             if(this.toDo ===''){
@@ -29,7 +29,7 @@ export default {
             this.resetAddBar()
         },
         resetAddBar() {
-            this.checked = false
+            this.completed = false
             this.toDo = ''
         }
     }
@@ -38,30 +38,28 @@ export default {
 
 <style scoped>
 
-
-
     .add-bar-container {
-        background: white;
-        padding: 15px;
-        width: 50%;
-        margin-top: 5%;
-        margin-bottom: 2%;
-        box-sizing: border-box;
+        background: #EAECEE;
         -webkit-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
         -moz-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
         box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
+        box-sizing: border-box;
+        margin-top: 5%;
+        margin-bottom: 2%;
+        padding: 15px;
+        width: 50%;
     }
 
     .add-bar {
-        background: #EAECEE;
+        background: #fff;
         border-radius: 5px;
     }
 
     .add-bar__input {
+        background: #fff;
         border: none;
-        background: #EAECEE;
-        width: 80%;
         padding: 15px;
+        width: 80%;
     }
 
     .add-bar__input:focus {
@@ -69,25 +67,25 @@ export default {
     }
 
     .add-bar__button  {
-        border: none;
         background: #FCC24C;
+        border: none;
+        border-radius: 5px;
         color: white;
         font-weight: bold;
         margin: 15px;
         padding: 10px 15px;
-        border-radius: 5px;
     }
 
     .add-bar__button:hover {
-        outline: none;
-        filter: brightness(125%);
         cursor: pointer;
+        filter: brightness(125%);
+        outline: none;
     }
 
     @media  only screen and (max-width: 576px) {
         .add-bar-container {
-            width: 95%;
             border-radius: 5px;
+            width: 95%;
         }
 
         .add-bar {

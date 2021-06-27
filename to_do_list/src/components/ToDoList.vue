@@ -1,19 +1,32 @@
 <template>
   <div class="to-do">
       <ul class="to-do__list">
-          <li class="to-do__list--task" v-for="task in toDoList" :key="task.index"><input type="checkbox" v-model="task.checked">{{ task.toDo }}</li>
+        <li class="to-do__list--task" v-for="task in toDoList" :key="task.index">
+              <input type="checkbox" v-model="task.completed" @click="taskDone">
+              <span :class="{ 'to-do__list--task-completed': isActive }" >{{ task.toDo }}</span>
+        </li>
       </ul>
-      <button class="to-do__button" type="submit" @click="deleteTask(task)">Delete completed</button>
+      <button class="to-do__button" type="submit" @click="deleteCompleted">Delete completed</button>
   </div>
 </template>
 
 <script>
+
 export default {
     name: 'ToDoList',
     props: ['toDoList'],
+    data() {
+        return {
+            isActive: false
+        }
+    },
     methods: {
-        deleteTask(task){
-            console.log(task)
+        deleteCompleted(){
+            this.$emit('deleteCompleted')
+        },
+        taskDone() {
+            this.isActive = true
+            console.log(this.toDoList)
         }
     }
 }
@@ -21,21 +34,14 @@ export default {
 
 <style scoped> 
     .to-do {
-        background: #fff;
-        width: 50%;
-        -webkit-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
+        background: #EAECEE;
+        color: #769ED4;
+         -webkit-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
         -moz-box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
         box-shadow: 0px 0px 15px 0px rgba(253,254,254,0.5);
         box-sizing: border-box;
-        color: #16A085;
+        width: 50%;
     }
-
-    /*
-    Clase
-    Id
-    Tipo de elemento
-    Si padre, si es par...
-    */
 
     .to-do__list {
         list-style-type: none;
@@ -43,8 +49,12 @@ export default {
     }
 
     .to-do__list--task {
-        border-bottom: 1px solid #EAECEE;
+        border-bottom: 1px solid #769ED4;
         margin-bottom: 15px;
+    }
+
+    .to-do__list--task-completed {
+        text-decoration: line-through;
     }
 
     input {
@@ -52,19 +62,19 @@ export default {
     }
 
     .to-do__button {
-        border: none;
         background: #FC65BA;
+        border: none;
+        border-radius: 5px;
         color: white;
         font-weight: bold;
         margin: 15px;
         padding: 15px 25px;
-        border-radius: 5px;
     }
 
     .to-do__button:hover {
-        outline: none;
-        filter: brightness(125%);
         cursor: pointer;
+        filter: brightness(125%);
+        outline: none;
     }
 
 
