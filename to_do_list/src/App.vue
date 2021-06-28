@@ -1,18 +1,15 @@
 <template>
   <div id="app">
-    <AddBar @addTask="addTaskToList"></AddBar>
-    <ToDoList :toDoList="toDoList"></ToDoList>
+      <ToDoList :toDoList="toDoList" @addTask="addTaskToList" @deleteCompleted="deleteCompleted"></ToDoList>
   </div>
 </template>
 
 <script>
-import AddBar from './components/AddBar.vue'
 import ToDoList from './components/ToDoList.vue'
 
 export default {
   name: 'App',
   components: {
-    AddBar,
     ToDoList
   },
   data() {
@@ -22,9 +19,11 @@ export default {
   },
   methods: {
     addTaskToList(task) {
-      console.log(task, 'test')
         this.toDoList.push(task)
-        console.log(this.toDoList)
+    },
+    deleteCompleted() {
+      let completed = this.toDoList.filter(element =>  {return element.completed === false})
+      this.toDoList = completed;
     }
   }
 }
@@ -32,19 +31,23 @@ export default {
 
 <style>
   html {
+    background-image: radial-gradient(circle, #aeb6bf, #8c96a2, #6b7785, #4b5a6a, #2c3e50);
     box-sizing: border-box;
-    background-image: radial-gradient(circle, #488ed4, #3b6cad, #2d4d88, #1e2f63, #0d1440);
     font-size: large;
   }
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  color: #2c3e50;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
+  body {
+    margin: 0 auto;
+  }
+
+  #app {
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
+  }
 </style>
