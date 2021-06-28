@@ -169,7 +169,7 @@ export default {
         
         .add-bar-container {
             border-radius: 5px;
-            /* width: 95%; */
+            width: 95%;
         }
 
         .add-bar {
