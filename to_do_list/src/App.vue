@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-      <ToDoList :toDoList="toDoList" @addTask="addTaskToList" @deleteCompleted="deleteCompleted"></ToDoList>
+    <!-- Acuerdate de identar y tabular correctamente -->
+    <ToDoList :toDoList="toDoList" @addTask="addTaskToList" @deleteCompleted="deleteCompleted"></ToDoList>
   </div>
 </template>
 
@@ -22,7 +23,12 @@ export default {
         this.toDoList.push(task)
     },
     deleteCompleted() {
+      // ¿Por que usamos LET aqui? Solo usamos let si en algún momento vamos a cambiarle el valor, en este caso no es necesario.
+      // Si quitamos los { } no hace falta un return, se sobre entiendo que devuelve algo (Lo sobreentiendo JS)
+      // Cuando hagamos un === false o === true, MALA SEÑAL, siempre podemos usar ! o !!   
       let completed = this.toDoList.filter(element =>  {return element.completed === false})
+      // Mi versión:
+      //const completed = this.toDoList.filter(element => !element.completed)
       this.toDoList = completed;
     }
   }

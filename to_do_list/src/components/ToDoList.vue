@@ -2,6 +2,7 @@
     <div class="to-do-container">
         <div class="add-bar-container">
             <div class="add-bar">
+                <!-- ¿Usamos el name y el id para algo? -->
                 <input class="add-bar__input" type="text" name="addToDoTask" id="addToDoTask" v-model="toDo" @keypress.enter="addTask" >
                 <button class="add-bar__button" type="text" @click="addTask">Add</button>
             </div>
@@ -10,7 +11,8 @@
             <ul class="to-do__list">
                 <li class="to-do__list--task" v-for="task in toDoList" :key="task.index">
                     <input type="checkbox" v-model="task.completed">
-                    <span :class="{ 'to-do__list--task-completed': task.completed}" >{{ task.toDo }}</span>
+                    <!-- Separaciones -->
+                    <span :class="{ 'to-do__list--task-completed': task.completed }" >{{ task.toDo }}</span>
                 </li>
             </ul>
             <button class="to-do__button" type="submit" @click="deleteCompleted">Delete completed</button>
@@ -34,7 +36,11 @@ export default {
                 completed: this.completed,
                 toDo: this.toDo
             }
-            if(this.toDo ===''){
+            // Las comprobaciones de este estilo siempre van lo primero, de lo contrario creamos una const task que nunca usamos en algunos casos
+            // Espacios
+            // En este caso quiza podemos usar tambien los Truthy https://developer.mozilla.org/es/docs/Glossary/Truthy
+            // if(!this.toDo){
+            if(this.toDo === ''){
                 return 
             }
             this.$emit('addTask', task)
